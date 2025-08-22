@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ifrane Climate Chart</title>
+    <style>
+        .climate-chart-container {
+            max-width: 100%;
+            margin: 20px auto;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            font-family: Arial, sans-serif;
+        }
+        
+        .chart-title {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.4em;
+            font-weight: bold;
+        }
+        
+        .chart-wrapper {
+            overflow-x: auto;
+            margin-bottom: 15px;
+        }
+        
+        .climate-table {
+            width: 100%;
+            min-width: 600px;
+            border-collapse: collapse;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        
+        .climate-table th {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            padding: 12px 8px;
+            text-align: center;
+            font-weight: bold;
+            border: 1px solid #2980b9;
+            font-size: 0.9em;
+        }
+        
+        .climate-table td {
+            padding: 10px 8px;
+            text-align: center;
+            border: 1px solid #bdc3c7;
+            font-size: 0.85em;
+        }
+        
+        .climate-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        .climate-table tr:hover {
+            background-color: #e3f2fd;
+            transition: background-color 0.3s ease;
+        }
+        
+        .temp-high {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        
+        .temp-low {
+            color: #3498db;
+            font-weight: bold;
+        }
+        
+        .precipitation {
+            color: #27ae60;
+            font-weight: bold;
+        }
+        
+        .snow {
+            color: #8e44ad;
+            font-weight: bold;
+        }
+        
+        .chart-source {
+            text-align: center;
+            font-size: 0.8em;
+            color: #7f8c8d;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #ecf0f1;
+        }
+        
+        .chart-source a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .chart-source a:hover {
+            text-decoration: underline;
+        }
+        
+        .legend {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 15px 0;
+            font-size: 0.8em;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+        }
+        
+        @media (max-width: 768px) {
+            .climate-chart-container {
+                padding: 15px;
+                margin: 10px;
+            }
+            
+            .chart-title {
+                font-size: 1.2em;
+            }
+            
+            .climate-table th,
+            .climate-table td {
+                padding: 8px 4px;
+                font-size: 0.8em;
+            }
+            
+            .legend {
+                font-size: 0.7em;
+                gap: 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .climate-table {
+                min-width: 500px;
+            }
+            
+            .legend {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="climate-chart-container">
+        <h3 class="chart-title">Ifrane Annual Climate Overview</h3>
+        
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color temp-high" style="background-color: #e74c3c;"></div>
+                <span>High Temp (°F)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color temp-low" style="background-color: #3498db;"></div>
+                <span>Low Temp (°F)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color precipitation" style="background-color: #27ae60;"></div>
+                <span>Rainfall (inches)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color snow" style="background-color: #8e44ad;"></div>
+                <span>Snowfall (inches)</span>
+            </div>
+        </div>
+        
+        <div class="chart-wrapper">
+            <table class="climate-table">
+                <thead>
+                    <tr>
+                        <th>Month</th>
+                        <th>High °F</th>
+                        <th>Low °F</th>
+                        <th>Rainfall</th>
+                        <th>Snowfall</th>
+                        <th>Wet Days</th>
+                        <th>Season</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Jan</strong></td>
+                        <td class="temp-high">48</td>
+                        <td class="temp-low">29</td>
+                        <td class="precipitation">2.1"</td>
+                        <td class="snow">5.7"</td>
+                        <td>6.2</td>
+                        <td>Cold/Snowy</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Feb</strong></td>
+                        <td class="temp-high">52</td>
+                        <td class="temp-low">32</td>
+                        <td class="precipitation">2.3"</td>
+                        <td class="snow">4.8"</td>
+                        <td>6.7</td>
+                        <td>Cold/Snowy</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mar</strong></td>
+                        <td class="temp-high">58</td>
+                        <td class="temp-low">36</td>
+                        <td class="precipitation">2.2"</td>
+                        <td class="snow">3.2"</td>
+                        <td>6.3</td>
+                        <td>Cool</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Apr</strong></td>
+                        <td class="temp-high">64</td>
+                        <td class="temp-low">41</td>
+                        <td class="precipitation">2.4"</td>
+                        <td class="snow">1.1"</td>
+                        <td>6.6</td>
+                        <td>Spring</td>
+                    </tr>
+                    <tr>
+                        <td><strong>May</strong></td>
+                        <td class="temp-high">71</td>
+                        <td class="temp-low">47</td>
+                        <td class="precipitation">1.8"</td>
+                        <td class="snow">0.0"</td>
+                        <td>5.2</td>
+                        <td>Mild</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Jun</strong></td>
+                        <td class="temp-high">78</td>
+                        <td class="temp-low">53</td>
+                        <td class="precipitation">0.7"</td>
+                        <td class="snow">0.0"</td>
+                        <td>2.8</td>
+                        <td>Warm/Dry</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Jul</strong></td>
+                        <td class="temp-high">81</td>
+                        <td class="temp-low">56</td>
+                        <td class="precipitation">0.2"</td>
+                        <td class="snow">0.0"</td>
+                        <td>1.0</td>
+                        <td>Hot/Dry</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Aug</strong></td>
+                        <td class="temp-high">81</td>
+                        <td class="temp-low">56</td>
+                        <td class="precipitation">0.3"</td>
+                        <td class="snow">0.0"</td>
+                        <td>1.2</td>
+                        <td>Hot/Dry</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sep</strong></td>
+                        <td class="temp-high">75</td>
+                        <td class="temp-low">51</td>
+                        <td class="precipitation">1.1"</td>
+                        <td class="snow">0.0"</td>
+                        <td>3.5</td>
+                        <td>Warm</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Oct</strong></td>
+                        <td class="temp-high">67</td>
+                        <td class="temp-low">44</td>
+                        <td class="precipitation">2.1"</td>
+                        <td class="snow">0.0"</td>
+                        <td>5.8</td>
+                        <td>Cool</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Nov</strong></td>
+                        <td class="temp-high">56</td>
+                        <td class="temp-low">36</td>
+                        <td class="precipitation">2.9"</td>
+                        <td class="snow">1.8"</td>
+                        <td>6.5</td>
+                        <td>Cold/Wet</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dec</strong></td>
+                        <td class="temp-high">50</td>
+                        <td class="temp-low">31</td>
+                        <td class="precipitation">2.5"</td>
+                        <td class="snow">4.2"</td>
+                        <td>6.3</td>
+                        <td>Cold/Snowy</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="chart-source">
+            <p><strong>Data Source:</strong> <a href="https://weatherspark.com/y/34044/Average-Weather-in-Ifrane-Morocco-Year-Round" target="_blank" rel="nofollow">WeatherSpark.com</a></p>
+            <p><em>Based on historical weather data from 1980-2016</em></p>
+        </div>
+    </div>
+</body>
+</html>
